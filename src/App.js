@@ -21,7 +21,7 @@ class App extends React.Component {
         title: 'About Me',
       },
       contact: {
-        title: "Let's talk",
+        title: "Let's talk tomorrow",
       },
     };
   }
