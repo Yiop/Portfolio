@@ -2,25 +2,33 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: 'Mengjie Yuan',
+      headerLinks: [
+        { title: 'Home', path: '/' },
+        { title: 'About', path: '/about' },
+        { title: 'Contact', path: '/contact' },
+      ],
+      home: {
+        title: 'Hello World',
+        subTitle: 'Portfolio',
+        text: 'Checkout my projects below',
+      },
+      about: {
+        title: 'About Me',
+      },
+      contact: {
+        title: "Let's talk",
+      },
+    };
+  }
+
+  render() {
+    return <div>Hello</div>;
+  }
 }
 
 export default App;
