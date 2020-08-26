@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '../components/Hero';
 import Content from '../components/Content';
 import { Form, Button } from 'react-bootstrap';
+import Axios from 'axios';
 class ContactPage extends React.Component {
   constructor(props) {
     super(props);
@@ -19,15 +20,35 @@ class ContactPage extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
-    this.setState(([name]: value));
+    this.setState({ [name]: value });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
     this.setState({
       disabled: true,
-      emailSent: false,
     });
+
+    Axios.post('http://localhost:3030/api/email', this.state)
+      .then((res) => {
+        if (res.data.success) {
+          this.setState({
+            disabled: false,
+            emailSent: true,
+          });
+        } else {
+          this.setState({
+            disabled: false,
+            emailSent: false,
+          });
+        }
+      })
+      .catch((err) => {
+        this.setState({
+          disabled: false,
+          emailSent: false,
+        });
+      });
   };
 
   render() {
